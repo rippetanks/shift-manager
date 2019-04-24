@@ -152,13 +152,9 @@ pub fn r_insert(request: &mut Request) -> IronResult<Response> {
     trace!("user -> r_insert");
     // get jwt claims
     match get_claims_with_handler(request) {
-        Ok(claims) => {
-            let id = get_user_by_claims(&claims);
+        Ok(_claims) => {
             // only admin can access this request
-            match check_admin(id) {
-                Ok(_user) => h_insert(request),
-                Err(e) => e
-            }
+            h_insert(request)
         },
         Err(e) => e
     }

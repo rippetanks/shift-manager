@@ -6,7 +6,7 @@ use jwt::{encode, decode, Header, Validation};
 use std::time::{SystemTime, UNIX_EPOCH};
 use jwt::TokenData;
 
-static SECRET: &str = "INSERT_YOUR_KEY";
+static mut SECRET: Option<String> = None;
 static TIME: u64 = 15000;
 
 #[derive(Serialize,Deserialize)]
@@ -18,6 +18,12 @@ pub struct Token {
 pub struct Claims {
     pub sub: String,
     pub exp: u64
+}
+
+pub fn init(secret: String) {
+    unsafe {
+        SECRET = Some(secret)
+    }
 }
 
 pub fn create(id: i64) -> Token {
@@ -41,11 +47,15 @@ pub fn renew(claims: &mut Claims) -> Token {
 
 pub fn from_token(token: &String) -> Result<TokenData<Claims>, jwt::errors::Error> {
     trace!("Parsing token...");
-    decode::<Claims>(token, SECRET.as_ref(), &Validation::default())
+    unsafe {
+        decode::<Claims>(token, SECRET.as_ref().unwrap().as_ref(), &Validation::default())
+    }
 }
 
 fn to_token(my_claims: &Claims) -> String {
     trace!("Serializing token...");
-    encode(&Header::default(), my_claims, SECRET.as_ref()).unwrap()
+    unsafe {
+        encode(&Header::default(), my_claims, SECRET.as_ref().unwrap().as_ref()).unwrap()
+    }
 }
 

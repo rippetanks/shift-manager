@@ -9,10 +9,10 @@ use r2d2::{Pool, PooledConnection};
 
 static mut POOL: Option<Pool<PostgresConnectionManager>> = None;
 
-pub fn init() {
-    let manager = PostgresConnectionManager::new(
-        "postgres://tm:tm_postgres@localhost:5432/turnimanager",
-        TlsMode::None).unwrap();
+pub fn init(user: &String, password: &String, host: &String) {
+    let url = format!("postgres://{}:{}@{}/turnimanager", user, password, host);
+    info!("{}", url);
+    let manager = PostgresConnectionManager::new(url, TlsMode::None).unwrap();
     let pool = r2d2::Pool::builder().max_size(2).build(manager);
     match pool {
         Ok(pool) => {
