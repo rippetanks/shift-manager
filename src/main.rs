@@ -37,7 +37,11 @@ fn main() {
 }
 
 fn load_param() -> HashMap<String, String> {
-    let f = File::open("/etc/shift_manager/config.conf").unwrap();
+    let f = if cfg!(windows) {
+        File::open("C:\\shift_manager\\config.conf").unwrap()
+    } else {
+        File::open("/etc/shift_manager/config.conf").unwrap()
+    };
     let mut map: HashMap<String, String> = HashMap::new();
     let file = BufReader::new(&f);
     for line in file.lines() {
