@@ -21,8 +21,11 @@ echo "Cloning..."
 if [ -z $branch ]; then
 	$branch = "master"
 fi
+git fetch
+git reset --hard origin/$branch
 git checkout $branch
 git pull
+chmod +x run.sh
 
 echo "Preparing..."
 
