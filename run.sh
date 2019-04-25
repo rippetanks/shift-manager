@@ -45,10 +45,10 @@ echo "Running..."
 
 if [ ! -z $consoleLog ] && [ $consoleLog == 'y' ]; then
 	echo "Console Log Enabled!"
-	exec ./target/release/turni_manager > console.log &
+	exec ./target/release/turni_manager &> console.log &
 else
 	echo "Console Log Disabled!"
-	exec ./target/release/turni_manager > /dev/null &
+	exec ./target/release/turni_manager &> /dev/null &
 fi
 
 echo "Ok!"
