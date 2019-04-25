@@ -5,8 +5,9 @@ extern crate postgres;
 extern crate log;
 extern crate simplelog;
 
-use std::env;
-use std::process::exit;
+use std::collections::HashMap;
+use std::fs::File;
+use std::io::{BufReader, BufRead};
 
 pub mod models;
 pub mod controller;
@@ -20,17 +21,29 @@ fn main() {
     shift_log::init();
     info!("Here we go again!");
     // param
-    let args: Vec<String> = env::args().collect();
-    if args.len() < 5 {
-        error!("Missing params -> require JWT secret, postgres username, postgres password");
-        exit(-1);
-    }
+    let param = load_param();
+    let jwt = param.get("JWT").unwrap().clone();
+    let pg_user = param.get("PG_USER").unwrap().clone();
+    let pg_pwd = param.get("PG_PWD").unwrap().clone();
+    let pg_host = param.get("PG_HOST").unwrap().clone();
     // init security
-    security::jwt::init(args.get(1).unwrap().to_owned());
+    security::jwt::init(jwt);
     info!("Security ready!");
     // init pool
-    database::db::init(args.get(2).unwrap(), args.get(3).unwrap(), args.get(4).unwrap());
+    database::db::init(&pg_user, &pg_pwd, &pg_host);
     info!("Database pool ready!");
     // init REST Web Service
     controller::init();
+}
+
+fn load_param() -> HashMap<String, String> {
+    let f = File::open("/etc/shift_manager/config.conf").unwrap();
+    let mut map: HashMap<String, String> = HashMap::new();
+    let file = BufReader::new(&f);
+    for line in file.lines() {
+        let l = line.unwrap();
+        let s: Vec<&str> = l.split("=").collect();
+        map.insert(s[0].to_owned(), s[1].to_owned());
+    }
+    map
 }
