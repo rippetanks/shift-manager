@@ -22,7 +22,7 @@ mod rest_shift_expansion;
 pub fn init(host: &String) {
     let mut router = Router::new();
 
-    let allowed_hosts = ["http://localhost", "https://rippetanks.ddns.net"].iter()
+    let allowed_hosts = ["http://localhost", "http://rippetanks.ddns.net"].iter()
         .map(ToString::to_string).collect::<HashSet<_>>();
     info!("Allowed origin hosts: {:?}", allowed_hosts);
     let cors_middleware = CorsMiddleware::with_whitelist(allowed_hosts);
