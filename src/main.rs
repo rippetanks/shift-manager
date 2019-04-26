@@ -23,6 +23,7 @@ fn main() {
     // param
     let param = load_param();
     let jwt = param.get("JWT").unwrap().clone();
+    let host = param.get("HOST").unwrap().clone();
     let pg_user = param.get("PG_USER").unwrap().clone();
     let pg_pwd = param.get("PG_PWD").unwrap().clone();
     let pg_host = param.get("PG_HOST").unwrap().clone();
@@ -33,7 +34,7 @@ fn main() {
     database::db::init(&pg_user, &pg_pwd, &pg_host);
     info!("Database pool ready!");
     // init REST Web Service
-    controller::init();
+    controller::init(&host);
 }
 
 fn load_param() -> HashMap<String, String> {

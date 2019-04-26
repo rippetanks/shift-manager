@@ -19,7 +19,7 @@ mod rest_auth;
 mod rest_shift_structure;
 mod rest_shift_expansion;
 
-pub fn init() {
+pub fn init(host: &String) {
     let mut router = Router::new();
 
     let allowed_hosts = ["http://localhost", "https://rippetanks.ddns.net"].iter()
@@ -57,8 +57,8 @@ pub fn init() {
     let mut chain = Chain::new(router);
     chain.link_around(cors_middleware);
 
-    info!("Serving on http://localhost:3000...");
-    Iron::new(chain).http("localhost:3000").unwrap();
+    info!("Serving on http://{}...", host);
+    Iron::new(chain).http(host).unwrap();
 }
 
 fn get_id_from_request(_request: &mut Request) -> Result<i64, IronResult<Response>> {
