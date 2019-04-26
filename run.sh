@@ -3,9 +3,6 @@
 echo "Hello, do you want enable console log on file? (y,N)?"
 read consoleLog
 
-echo "Git branch? (Master, ...)?"
-read branch
-
 FILE="ShiftManager"
 EXT=".log"
 FXT="$FILE$EXT"
@@ -18,12 +15,9 @@ fi
 
 echo "Cloning..."
 
-if [ -z $branch ]; then
-	$branch = "master"
-fi
 git fetch
-git reset --hard origin/$branch
-git checkout $branch
+git reset --hard origin/master
+git checkout master
 git pull
 chmod +x run.sh
 
