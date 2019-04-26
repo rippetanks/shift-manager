@@ -38,7 +38,7 @@ pub fn init(host: &String) {
     // auth
     router.post("/login", rest_auth::login, "login");
     router.post("/logout", rest_auth::logout, "logout");
-    router.post("/keepalive", rest_auth::keepalive, "keepalive");
+    router.get("/keepalive", rest_auth::keepalive, "keepalive");
 
     // shift structure
     router.get("/structure", rest_shift_structure::r_get_by_user, "shift_s_by_user");
