@@ -150,14 +150,7 @@ fn h_disable(id: i64) -> IronResult<Response> {
 
 pub fn r_insert(request: &mut Request) -> IronResult<Response> {
     trace!("user -> r_insert");
-    // get jwt claims
-    match get_claims_with_handler(request) {
-        Ok(_claims) => {
-            // only admin can access this request
-            h_insert(request)
-        },
-        Err(e) => e
-    }
+    h_insert(request)
 }
 
 fn h_insert(request: &mut Request) -> IronResult<Response> {
