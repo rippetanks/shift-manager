@@ -1,0 +1,27 @@
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 500;
+  font-family: "Courier";
+}
+
+.with-margin {
+  margin-right: 20px;
+}
+
+.top-space {
+  margin-top: 20px;
+}
+
+.comand-row button {
+  margin: 0 auto;
+  display: block;
+}
+
+.table-comand {
+  text-align: right;
+}
+.table-comand i {
+  cursor: pointer;
+  font-size: 1.2rem;
+}
