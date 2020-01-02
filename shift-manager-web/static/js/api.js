@@ -23,7 +23,7 @@
 */
 const API = (function() {
 
-  let baseURL = 'http://rippetanks.ddns.net:3000';
+  let baseURL = 'https://rippetanks.ddns.net:3000';
   //let baseURL = 'http://localhost:8000';
 
   function http_get(url, cb) {
