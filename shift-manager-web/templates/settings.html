@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css"
+          rel="stylesheet">
+
+    <link href="static/css/common.css" rel="stylesheet">
+    <link href="static/css/settings.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"
+            integrity="sha384-6UVI3atWyL/qZbDIJb7HW8PyHhFNMiX5rYNY2gAYcaYJjYk5cNIQShSQPBleGMYu" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/it.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/1.0.2/jsrender.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jsviews/1.0.2/jsviews.min.js"></script>-->
+
+    <script src="static/js/storage.js"></script>
+    <script src="static/js/sha3.min.js"></script>
+    <script src="static/js/api.js"></script>
+    <script src="static/js/settings.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="section-title top-space">Turni Struttura</div>
+      <div class="panel panel-default">
+        <div class="row justify-content-between">
+          <div class="col">
+            <form class="form-inline my-2 my-lg-0">
+              <div class="input-group date" id="datetimepicker" data-target-input="nearest">
+                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker"/>
+                <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
+                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col table-comand">
+            <span><i class="fa fa-plus" id="plus"></i></span>
+            <span style="margin-left: 15px;" id="minus"><i class="fa fa-minus"></i></span>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 15px;"><div class="col">
+          <table class="table table-striped table-hover table-sm" id="tableShift">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Mattina</th>
+                <th scope="col">Pomeriggio</th>
+                <th scope="col">Notte</th>
+                <th scope="col">Riposo</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div></div>
+      </div>
+      <hr>
+      <!-- Account -->
+      <div class="section-title">Account</div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <button type="button" class="btn btn-warning with-margin" disabled>Cambia Password</button>
+          <button type="button" class="btn btn-danger with-margin" disabled>Elimina</button>
+        </div>
+      </div>
+      <hr>
+      <!-- comand button -->
+      <div class="row justify-content-end comand-row">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-4">
+          <a href="/" class="btn btn-link">Indietro</a>
+        </div>
+      </div>
+    </div>
+    <footer class="page-footer text-muted text-center">
+			© 2019 Copyright <a href="https://rippetanks.ddns.net/" target="_blank">Simone Martelli</a> -
+			<a href="https://www.gnu.org/licenses/agpl-3.0.en.html" target="_blank">GNU Affero GPL</a>
+      <a href="https://github.com/rippetanks" target="_blank"><img src="static/img/GitHub.png" class="github-icon"></img></a>
+    </footer>
+
+    <script type="text/x-jsrender" id="template">
+      {{for data}}
+      <tr data-id="{{:id}}">
+        <th scope="row" class="prog">{{:prog}}</th>
+        <td><input type="checkbox" class="morning-check" {{:morning ? 'checked' : ''}}></td>
+        <td><input type="checkbox" class="afternoon-check" {{:afternoon ? 'checked' : ''}}></td>
+        <td><input type="checkbox" class="night-check" {{:night ? 'checked' : ''}}></td>
+        <td><input type="checkbox" class="rest-check" {{:rest ? 'checked' : ''}}></td>
+      </tr>
+      {{/for}}
+    </script>
+  </body>
+</html>

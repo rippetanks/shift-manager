@@ -1,0 +1,92 @@
+/*
+  Copyright (C) 2019  Simone Martelli
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+
+  You should have received a copy of the GNU Affero General Public License
+  along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+  Contact info:
+  - email:  simone.martelli.98@gmail.com
+*/
+
+:root {
+  --morning-color: #4caf50df;
+  --afternoon-color: #f4511edf;
+  --night-color: #303f9fdf;
+}
+
+.hello-week .day {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.hello-week .day.is-today {
+  border: solid 4px #ffb300;
+  font-weight: bold;
+}
+
+.hello-week .day.is-weekend {
+  color: #fdd835;
+  font-weight: 600;
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+}
+
+.legenda {
+  margin-top: 20px;
+}
+.legenda span {
+  vertical-align: middle;
+  font-size: 1.2rem;
+  margin-left: 5px;
+}
+.legenda .title {
+  font-family: "Courier";
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.legenda .legend-icon {
+  font-size: 2.5rem;
+  vertical-align: middle;
+}
+.legenda .legend-icon.morning {
+  color: var(--morning-color);
+}
+.legenda .legend-icon.afternoon {
+  color: var(--afternoon-color);
+}
+.legenda .legend-icon.night {
+  color: var(--night-color);
+}
+.legenda .legend-icon.rest {
+
+}
+
+.hello-week .day.morning {
+  background-color: var(--morning-color) !important;
+}
+
+.hello-week .day.afternoon {
+  background-color: var(--afternoon-color) !important;
+}
+
+.hello-week .day.night {
+  background-color: var(--night-color) !important;
+  color: #ffffff;
+}
+
+.hello-week .day.rest {
+  background-color: transparent !important;
+}
