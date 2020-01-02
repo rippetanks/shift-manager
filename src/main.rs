@@ -8,6 +8,8 @@
 #[macro_use] extern crate log;
 extern crate log4rs;
 
+use std::env;
+
 mod base_model;
 mod base_controller;
 mod controller;
@@ -20,7 +22,13 @@ mod shift_structure;
 mod shift_expansion;
 
 fn main() {
-    log4rs::init_file("log-config.yml", Default::default()).unwrap();
+    let args: Vec<String> = env::args().collect();
+    let path = if cfg!(windows) {
+        "log-config.yml"
+    } else {
+        args.get(1).unwrap()
+    };
+    log4rs::init_file(path, Default::default()).unwrap();
 
     let error = controller::init();
     error!("Launch failed! Error: {}", error);
